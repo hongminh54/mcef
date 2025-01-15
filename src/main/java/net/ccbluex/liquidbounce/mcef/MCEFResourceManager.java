@@ -117,8 +117,8 @@ public class MCEFResourceManager {
                 }
 
                 // Download JCEF from file hosting
-                MCEF.INSTANCE.getLogger().info("Downloading JCEF...");
-                progressTracker.setTask("Downloading JCEF");
+                MCEF.INSTANCE.getLogger().info("Đang tải JCEF...");
+                progressTracker.setTask("Đang tải JCEF");
                 downloadFile(getJavaCefDownloadUrl(), tarGzArchive, progressTracker);
 
                 // Delete existing platform directory
@@ -142,7 +142,7 @@ public class MCEFResourceManager {
                 progressTracker.done();
 
                 // Extract JCEF from tar.gz
-                MCEF.INSTANCE.getLogger().info("Extracting JCEF...");
+                MCEF.INSTANCE.getLogger().info("Đang trích xuất JCEF...");
                 extractTarGz(tarGzArchive, commitDirectory, progressTracker);
                 if (tarGzArchive.exists() && !FileUtils.deleteQuietly(tarGzArchive)) {
                     // Retry deletion on exit

@@ -32,7 +32,7 @@ import net.minecraft.util.Formatting;
 public class MCEFProgressMenu extends Screen {
 
     public MCEFProgressMenu(String brand) {
-        super(Text.literal(brand + " is downloading required libraries..."));
+        super(Text.literal("Chờ xíu " + brand + " đang tải các plugin cần thiết..."));
     }
 
     @Override
