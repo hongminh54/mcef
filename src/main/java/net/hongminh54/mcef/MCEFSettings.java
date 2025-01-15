@@ -18,7 +18,7 @@
  *     USA
  */
 
-package net.ccbluex.liquidbounce.mcef;
+package net.hongminh54.mcef;
 
 import java.io.File;
 import java.util.Arrays;

@@ -18,9 +18,9 @@
  *     USA
  */
 
-package net.ccbluex.liquidbounce.mcef;
+package net.hongminh54.mcef;
 
-import net.ccbluex.liquidbounce.mcef.progress.MCEFProgressTracker;
+import net.hongminh54.mcef.progress.MCEFProgressTracker;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okio.Buffer;
@@ -81,7 +81,7 @@ public class MCEFResourceManager {
 
     public boolean requiresDownload() throws IOException {
         if (!commitDirectory.exists() && !commitDirectory.mkdirs()) {
-            throw new IOException("Failed to create directory");
+            throw new IOException("Thất bại khi tạo thư mục");
         }
 
         var checksumFile = new File(commitDirectory, platform.getNormalizedName() + ".tar.gz.sha256");
@@ -93,15 +93,15 @@ public class MCEFResourceManager {
         try {
             checksumMatches = compareChecksum(checksumFile);
         } catch (IOException e) {
-            MCEF.INSTANCE.getLogger().error("Failed to compare checksum", e);
+            MCEF.INSTANCE.getLogger().error("Thất bại khi so sánh kiểm tra tổng", e);
 
             // Assume checksum matches if we can't compare
             checksumMatches = true;
         }
         var platformDirectoryExists = platformDirectory.exists();
 
-        MCEF.INSTANCE.getLogger().info("Checksum matches: " + checksumMatches);
-        MCEF.INSTANCE.getLogger().info("Platform directory exists: " + platformDirectoryExists);
+        MCEF.INSTANCE.getLogger().info("Kiểm tra tổng khớp: " + checksumMatches);
+        MCEF.INSTANCE.getLogger().info("Thư mục nền tảng đã tồn tại: " + platformDirectoryExists);
 
         return !checksumMatches || !platformDirectoryExists;
     }
@@ -123,7 +123,7 @@ public class MCEFResourceManager {
 
                 // Delete existing platform directory
                 if (platformDirectory.exists()) {
-                    MCEF.INSTANCE.getLogger().info("Deleting existing platform directory...");
+                    MCEF.INSTANCE.getLogger().info("Xoá thư mục nền tảng hiện có...");
 
                     // Delete existing platform directory - if this fails,
                     // we hope [extractTarGz] will overwrite the existing files instead.
@@ -131,11 +131,11 @@ public class MCEFResourceManager {
                 }
 
                 // Compare checksum of .tar.gz file with remote checksum file
-                progressTracker.setTask("Comparing Checksum");
+                progressTracker.setTask("So sánh Kiểm tra Tổng");
 
                 var checksumFile = new File(commitDirectory, platform.getNormalizedName() + ".tar.gz.sha256");
                 if (!compareChecksum(checksumFile, tarGzArchive)) {
-                    throw new IOException("Checksum mismatch");
+                    throw new IOException("Kiểm tra Tổng không khớp");
                 }
 
                 progressTracker.setProgress(1.0f);
@@ -152,7 +152,7 @@ public class MCEFResourceManager {
                 }
                 break;
             } catch (Exception e) {
-                MCEF.INSTANCE.getLogger().error("Failed to download and extract JCEF", e);
+                MCEF.INSTANCE.getLogger().error("Thất bại khi tải xuống và trích xuất JCEF", e);
                 retry++;
 
                 // Retry up to 3 times
@@ -193,7 +193,7 @@ public class MCEFResourceManager {
         // Create temporary checksum file with the same name as the real checksum file and .temp appended
         var tempChecksumFile = new File(checksumFile.getCanonicalPath() + ".temp");
 
-        progressTracker.setTask("Downloading Checksum");
+        progressTracker.setTask("Tải xuống Kiểm tra Tổng");
         downloadFile(getJavaCefChecksumDownloadUrl(), tempChecksumFile, progressTracker);
 
         if (checksumFile.exists()) {
@@ -214,10 +214,10 @@ public class MCEFResourceManager {
     }
 
     private boolean compareChecksum(File checksumFile, File archiveFile) {
-        progressTracker.setTask("Comparing Checksum");
+        progressTracker.setTask("So sánh Kiểm tra Tổng");
 
         if (!checksumFile.exists()) {
-            throw new RuntimeException("Checksum file does not exist");
+            throw new RuntimeException("Tệp Kiểm tra Tổng không tồn tại");
         }
 
         try {
@@ -226,7 +226,7 @@ public class MCEFResourceManager {
 
             return checksum.equals(actualChecksum);
         } catch (IOException e) {
-            throw new RuntimeException("Error reading checksum file", e);
+            throw new RuntimeException("Lỗi khi đọc tệp Kiểm tra Tổng", e);
         }
     }
 
@@ -238,7 +238,7 @@ public class MCEFResourceManager {
 
         try (var response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) {
-                throw new IOException("Unexpected response status: " + response.code());
+                throw new IOException("Trạng thái phản hồi không mong muốn: " + response.code());
             }
 
             var body = response.body();
@@ -266,7 +266,7 @@ public class MCEFResourceManager {
 
     private void extractTarGz(File tarGzFile, File outputDirectory, MCEFProgressTracker percentCompleteConsumer)
             throws IOException {
-        percentCompleteConsumer.setTask("Extracting");
+        percentCompleteConsumer.setTask("Đang trích xuất");
         outputDirectory.mkdirs();
 
         try (TarArchiveInputStream tarInput = new TarArchiveInputStream(new GzipCompressorInputStream(new FileInputStream(tarGzFile)))) {

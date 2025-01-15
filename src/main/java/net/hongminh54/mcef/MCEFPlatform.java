@@ -18,7 +18,7 @@
  *     USA
  */
 
-package net.ccbluex.liquidbounce.mcef;
+package net.hongminh54.mcef;
 
 import org.apache.commons.exec.OS;
 
@@ -71,7 +71,7 @@ public enum MCEFPlatform {
 
         String os = System.getProperty("os.name").toLowerCase(Locale.ENGLISH);
         String arch = System.getProperty("os.arch").toLowerCase(Locale.ENGLISH);
-        throw new RuntimeException("Unsupported platform: " + os + " " + arch);
+        throw new RuntimeException("Nền tảng không được hỗ trợ: " + os + " " + arch);
     }
 
     public String[] requiredLibraries() {

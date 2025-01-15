@@ -19,13 +19,28 @@
  *
  */
 
-package net.ccbluex.liquidbounce.mcef;
+package net.hongminh54.mcef.glfw;
 
-import org.cef.CefBrowserSettings;
+import org.cef.misc.CefCursorType;
+import org.lwjgl.glfw.GLFW;
 
-public class MCEFBrowserSettings extends CefBrowserSettings {
-    public MCEFBrowserSettings(int frameRate) {
-        super();
-        this.windowless_frame_rate = frameRate;
+import java.util.HashMap;
+
+public class MCEFGlfwCursorHelper {
+
+    private static final HashMap<CefCursorType, Long> CEF_TO_GLFW_CURSORS = new HashMap<>();
+
+    /**
+     * Helper method to get a GLFW cursor handle for the given {@link CefCursorType} cursor type
+     */
+    public static long getGLFWCursorHandle(CefCursorType cursorType) {
+        if (CEF_TO_GLFW_CURSORS.containsKey(cursorType)) {
+            return CEF_TO_GLFW_CURSORS.get(cursorType);
+        }
+
+        var glfwCursorHandle = GLFW.glfwCreateStandardCursor(cursorType.glfwId);
+        CEF_TO_GLFW_CURSORS.put(cursorType, glfwCursorHandle);
+        return glfwCursorHandle;
     }
+
 }

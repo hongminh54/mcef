@@ -18,12 +18,12 @@
  *     USA
  */
 
-package net.ccbluex.liquidbounce.mcef;
+package net.hongminh54.mcef;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.ccbluex.liquidbounce.mcef.glfw.MCEFGlfwCursorHelper;
-import net.ccbluex.liquidbounce.mcef.listeners.MCEFCursorChangeListener;
+import net.hongminh54.mcef.glfw.MCEFGlfwCursorHelper;
+import net.hongminh54.mcef.listeners.MCEFCursorChangeListener;
 import org.cef.browser.CefBrowser;
 import org.cef.browser.CefBrowserOsr;
 import org.cef.callback.CefDragData;
@@ -37,7 +37,7 @@ import org.lwjgl.system.MemoryUtil;
 import java.awt.*;
 import java.nio.ByteBuffer;
 
-import static net.ccbluex.liquidbounce.mcef.MCEF.mc;
+import static net.hongminh54.mcef.MCEF.mc;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 

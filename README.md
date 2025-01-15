@@ -3,27 +3,24 @@
 </p>
 
 # MCEF (Minecraft Chromium Embedded Framework)
-A fork of the MCEF mod and library for adding the Chromium web browser into Minecraft.
+MCEF (Minecraft Chromium Embedded Framework): Một bản fork của mod và thư viện MCEF cho phép thêm trình duyệt web Chromium vào Minecraft.
 
-MCEF is based on java-cef (Java Chromium Embedded Framework), which is based on CEF (Chromium Embedded Framework), which is based on Chromium. It was originally created by montoyo. It was rewritten by the CinemaMod Group.
+MCEF dựa trên java-cef (Java Chromium Embedded Framework), bản thân java-cef lại dựa trên CEF (Chromium Embedded Framework), và CEF dựa trên Chromium. MCEF ban đầu được tạo bởi montoyo. Sau đó được viết lại bởi CinemaMod Group.
 
-MCEF contains a downloader system for downloading the java-cef & CEF binaries required by the Chromium browser. This requires a connection to https://mcef-download.cinemamod.com.
+MCEF có hệ thống tải xuống để tải xuống các tệp nhị phân java-cef & CEF cần thiết cho trình duyệt Chromium. Việc này yêu cầu kết nối với https://mcef-download.cinemamod.com.
 
-Current Chromium version: `116.0.5845.190`
+Phiên bản Chromium hiện tại:: `116.0.5845.190`
 
-## Supported Platforms
+## Các nền tảng được hỗ trợ
 - Windows 10/11 (x86_64, arm64)*
 - macOS 11 or greater (Intel, Apple Silicon)
 - GNU Linux glibc 2.31 or greater (x86_64, arm64)**
 
-*Some antivirus software may prevent MCEF from initializing. You may have to disable your antivirus or whitelist the mod files for MCEF to work properly.
+*Một số phần mềm diệt virus có thể ngăn chặn MCEF khởi tạo. Bạn có thể cần phải vô hiệu hóa phần mềm diệt virus hoặc thêm danh sách trắng cho các tệp mod của MCEF để MCEF hoạt động chính xác.
 
-**This mod will not work on Android.
+**Không hoạt động đối với Android.
 
-## For Modders
-MCEF is LGPL, as long as your project doesn't modify or include MCEF source code, you can choose a different license. Read the full license in the LICENSE file in this directory.
-
-### Using MCEF in Your Project
+### Sử dụng MCEF trong dự án của bạn
 ```
 repositories {
     maven { url 'https://jitpack.io' }
@@ -35,10 +32,20 @@ dependencies {
 }
 ```
 
-### Building & Modifying MCEF
-After cloning this repo, you will need to clone the java-cef git submodule. There is a gradle task for this: `./gradlew cloneJcef`.
+### Dependencies Khác
+```
+dependencies {
+    modImplementation 'com.github.hongminh54:mcef:1.21.4-SNAPSHOT'
+}
+```
 
-## Fork Hirarchy
+### Xây dựng & Sửa đổi MCEF
+Sau khi sao chép kho lưu trữ này, bạn cần sao chép git submodule java-cef. Có một tác vụ gradle cho việc này: `./gradlew cloneJcef`.
+
+## Phân cấp Fork
 - [CCBlueX/mcef](https://github.com/CCBlueX/mcef)
 - [CinemaMod/mcef](https://github.com/CinemaMod/mcef)
 - [montoyo/mcef](https://github.com/montoyo/mcef)
+
+## Credit Source: 
+- CCBlueX

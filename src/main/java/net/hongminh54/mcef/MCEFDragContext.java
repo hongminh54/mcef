@@ -18,7 +18,7 @@
  *     USA
  */
 
-package net.ccbluex.liquidbounce.mcef;
+package net.hongminh54.mcef;
 
 import org.cef.callback.CefDragData;
 import org.cef.misc.CefCursorType;

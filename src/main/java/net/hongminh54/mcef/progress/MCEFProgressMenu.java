@@ -19,9 +19,9 @@
  *
  */
 
-package net.ccbluex.liquidbounce.mcef.progress;
+package net.hongminh54.mcef.progress;
 
-import net.ccbluex.liquidbounce.mcef.MCEF;
+import net.hongminh54.mcef.MCEF;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;

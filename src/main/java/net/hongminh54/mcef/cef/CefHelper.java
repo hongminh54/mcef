@@ -19,10 +19,10 @@
  *
  */
 
-package net.ccbluex.liquidbounce.mcef.cef;
+package net.hongminh54.mcef.cef;
 
-import net.ccbluex.liquidbounce.mcef.MCEF;
-import net.ccbluex.liquidbounce.mcef.MCEFPlatform;
+import net.hongminh54.mcef.MCEF;
+import net.hongminh54.mcef.MCEFPlatform;
 import org.cef.CefApp;
 import org.cef.CefClient;
 import org.cef.CefSettings;
@@ -55,7 +55,7 @@ public final class CefHelper {
         try {
             Files.setPosixFilePermissions(file.toPath(), perms);
         } catch (IOException e) {
-            MCEF.INSTANCE.getLogger().error("Failed to set file permissions for " + file.getPath(), e);
+            MCEF.INSTANCE.getLogger().error("Thất bại khi đặt quyền tệp cho " + file.getPath(), e);
         }
     }
 
@@ -86,8 +86,8 @@ public final class CefHelper {
             var nativeFile = new File(platformDirectory, nativeLibrary);
 
             if (!nativeFile.exists()) {
-                MCEF.INSTANCE.getLogger().error("Missing native library: " + nativeFile.getPath());
-                throw new RuntimeException("Missing native library: " + nativeFile.getPath());
+                MCEF.INSTANCE.getLogger().error("Thiếu thư viện gốc: " + nativeFile.getPath());
+                throw new RuntimeException("Thiếu thư viện gốc: " + nativeFile.getPath());
             }
         }
 
@@ -122,13 +122,13 @@ public final class CefHelper {
             try {
                 cefClientInstance.dispose();
             } catch (Exception e) {
-                MCEF.INSTANCE.getLogger().error("Failed to dispose CefClient", e);
+                MCEF.INSTANCE.getLogger().error("Thất bại khi hủy bỏ CefClient", e);
             }
 
             try {
                 cefAppInstance.dispose();
             } catch (Exception e) {
-                MCEF.INSTANCE.getLogger().error("Failed to dispose CefApp", e);
+                MCEF.INSTANCE.getLogger().error("Thất bại khi hủy bỏ CefApp", e);
             }
         }
     }

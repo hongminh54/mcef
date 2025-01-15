@@ -18,7 +18,7 @@
  *     USA
  */
 
-package net.ccbluex.liquidbounce.mcef.listeners;
+package net.hongminh54.mcef.listeners;
 
 @FunctionalInterface
 public interface MCEFCursorChangeListener {

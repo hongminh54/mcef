@@ -18,9 +18,9 @@
  *     USA
  */
 
-package net.ccbluex.liquidbounce.mcef;
+package net.hongminh54.mcef;
 
-import net.ccbluex.liquidbounce.mcef.cef.CefHelper;
+import net.hongminh54.mcef.cef.CefHelper;
 import net.minecraft.client.MinecraftClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,13 +66,13 @@ public enum MCEF {
     }
 
     public boolean initialize() {
-        LOGGER.info("Initializing CEF on " + MCEFPlatform.getPlatform().getNormalizedName() + "...");
+        LOGGER.info("Khởi tạo CEF trên " + MCEFPlatform.getPlatform().getNormalizedName() + "...");
 
         if (CefHelper.init()) {
             app = new MCEFApp(CefHelper.getCefApp());
             client = new MCEFClient(CefHelper.getCefClient());
 
-            LOGGER.info("Chromium Embedded Framework initialized");
+            LOGGER.info("Chromium Embedded Framework đã được khởi tạo");
 
             // Handle shutdown events, macOS is special
             // These are important; the jcef process will linger around if not done
@@ -89,7 +89,7 @@ public enum MCEF {
             return true;
         }
 
-        LOGGER.info("Could not initialize Chromium Embedded Framework");
+        LOGGER.info("Không thể khởi tạo Chromium Embedded Framework");
         shutdown();
         return false;
     }
@@ -168,7 +168,7 @@ public enum MCEF {
      */
     private void assertInitialized() {
         if (!isInitialized()) {
-            throw new RuntimeException("Chromium Embedded Framework was never initialized.");
+            throw new RuntimeException("Chromium Embedded Framework chưa bao giờ được khởi tạo.");
         }
     }
 

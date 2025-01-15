@@ -19,9 +19,9 @@
  *
  */
 
-package net.ccbluex.liquidbounce.mcef.progress;
+package net.hongminh54.mcef.progress;
 
-import net.ccbluex.liquidbounce.mcef.MCEF;
+import net.hongminh54.mcef.MCEF;
 
 public class MCEFProgressTracker {
 
@@ -35,7 +35,7 @@ public class MCEFProgressTracker {
         this.task = name;
         this.percent = 0;
 
-        MCEF.INSTANCE.getLogger().info("[" + this.task + "] Started task");
+        MCEF.INSTANCE.getLogger().info("[" + this.task + "] Bắt đầu nhiệm vụ");
     }
 
     public String getTask() {
@@ -46,7 +46,7 @@ public class MCEFProgressTracker {
         this.percent = Math.min(1, Math.max(0, percent));
 
         if ((int) (this.percent * 100) != (int) (loggedPercent * 100)) {
-            MCEF.INSTANCE.getLogger().info("[" + this.task + "] Progress " + (int) (this.percent * 100) + "%");
+            MCEF.INSTANCE.getLogger().info("[" + this.task + "] Tiến trình " + (int) (this.percent * 100) + "%");
             this.loggedPercent = this.percent;
         }
     }
@@ -57,7 +57,7 @@ public class MCEFProgressTracker {
 
     public void done() {
         this.done = true;
-        MCEF.INSTANCE.getLogger().info("[" + this.task + "] Finished task");
+        MCEF.INSTANCE.getLogger().info("[" + this.task + "] Hoàn thành nhiệm vụ");
     }
 
     public boolean isDone() {

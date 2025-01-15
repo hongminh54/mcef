@@ -3,7 +3,7 @@
   "id": "${mod_id}",
   "version": "${mod_version}",
   "name": "${mod_name}",
-  "description": "A Minecraft mod and library for adding the Chromium web browser into the game (Minecraft Chromium Embedded Framework).",
+  "description": "Minecraft Chromium Embedded Framework (MCEF): Một mod và thư viện Minecraft cho phép thêm trình duyệt web Chromium vào game.",
   "authors": [
     "${mod_vendor}"
   ],
