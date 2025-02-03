@@ -18,7 +18,7 @@ Phiên bản Chromium hiện tại:: `116.0.5845.190`
 
 *Một số phần mềm diệt virus có thể ngăn chặn MCEF khởi tạo. Bạn có thể cần phải vô hiệu hóa phần mềm diệt virus hoặc thêm danh sách trắng cho các tệp mod của MCEF để MCEF hoạt động chính xác.
 
-**Không hoạt động đối với Android.
+*Không hoạt động đối với Android.
 
 ### Sử dụng MCEF trong dự án của bạn
 ```
